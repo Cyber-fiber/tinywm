@@ -7,8 +7,11 @@
 #include <vector>
 #include <stdio.h>
 
-#define SCREEN_WIDTH   1920
-#define SCREEN_HEIGHT  1080
+// #define SCREEN_WIDTH   1920
+// #define SCREEN_HEIGHT  1080
+scr = XDefaultScreenOfDisplay(dpy);
+int SCREEN_WIDTH = WidthOfScreen(scr);
+int SCREEN_HEIGHT = HeightOfScreen(scr);
 #define SIDE_WIN_RESIZE 0
 
 Display * dpy;
@@ -39,14 +42,14 @@ void SetInput(Display *dpy)
   root = RootWindow(dpy, DefaultScreen(dpy));
 
   XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("a")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("c")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("x")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode(dpy, XK_Escape), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("f")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("h")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("r")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("t")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode(dpy, XK_Tab), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("x")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("c")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
   XGrabKey(dpy, XKeysymToKeycode(dpy, XStringToKeysym("z")), Mod1Mask,DefaultRootWindow(dpy), True, GrabModeAsync, GrabModeAsync);
   XGrabButton(dpy, 1, Mod1Mask, DefaultRootWindow(dpy), True,
     ButtonPressMask|ButtonReleaseMask|PointerMotionMask, GrabModeAsync, GrabModeAsync, 
@@ -98,10 +101,10 @@ inline void ProcessKey(const XEvent &ev)
     }
     break;
   case 27:
-    system("dmenu_run &");
+    system("rofi --show &");
     break;
   case 28:
-    system("term &");
+    system("x-terminal-emulator &");
     break;
   case 38:
     {
@@ -174,7 +177,6 @@ inline void ProcessKey(const XEvent &ev)
   }
   ProcessWin();
 }
-
 inline void ProcessMouse(const XEvent &ev)
 {
   switch(ev.type)
@@ -236,4 +238,3 @@ inline void ProcessMouse(const XEvent &ev)
     break;
   }
 }
-

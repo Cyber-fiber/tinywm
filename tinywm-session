@@ -1,5 +1,6 @@
 #!/bin/sh
 xsetroot -solid "#000000"
+#nitrogen --restore
 xrdb -load $HOME/.Xresources
 #x-terminal-emulator
 exec /usr/bin/tinywm
