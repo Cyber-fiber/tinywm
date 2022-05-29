@@ -3,7 +3,7 @@ tinywm tiny window manager, 8l, zlib license, 2016-2018
 http://plan9assembler.files.wordpress.com/2017/04/desktop.jpg
 
 alt + a     : adjust 2 windows 
-alt + x     : run chrome
+alt + x     : run xfce4-terminal
 alt + f     : run firefox
 alt + tab   : toggle window and set focus
 alt + r     : run rofi

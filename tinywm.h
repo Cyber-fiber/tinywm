@@ -169,7 +169,7 @@ inline void ProcessKey(const XEvent &ev)
     }
     break;
   case 54:
-    system("chrome &");
+    system("xfce4-terminal &");
     break;
   //todo: create little window
   case 9:
